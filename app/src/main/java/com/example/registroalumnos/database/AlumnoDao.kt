@@ -13,23 +13,17 @@ interface AlumnoDao {
     @Query("SELECT * FROM alumno WHERE id like :id")
     fun getElementById(id: Long): Alumno
 
-    //Query para eliminar todos los elementos por nombre de la tabla
-
-@Delete
-fun BorrarAlumno()
-
-
-
     @Insert
     fun addAlumno(elemento: Alumno):Long
 
     @Update
     fun updateAlumno(elemento: Alumno):Int
 
-
+    @Delete
+    fun deleteLista(alumno: MutableList<Alumno>)
 
     @Query("SELECT * FROM alumno WHERE nombre like :nombre")
-    fun obtenerAlumnoPorNombre(nombre: String): Alumno
+    fun obtenerAlumnoPorNombre(nombre: String): MutableList<Alumno>
 
 
 
