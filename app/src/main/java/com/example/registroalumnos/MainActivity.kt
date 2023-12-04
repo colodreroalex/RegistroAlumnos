@@ -39,11 +39,7 @@ class MainActivity : ActivityWithMenus() {
 
     private fun addAlumno(alumno: Alumno) {
         CoroutineScope(Dispatchers.IO).launch {
-            val id = MiAlumnoApp.database.alumnoDao().addAlumno(alumno)
-            val recoveryAlumno = MiAlumnoApp.database.alumnoDao().getElementById(id)
-            runOnUiThread {
-                listaAlumnos.add(recoveryAlumno)
-            }
+            MiAlumnoApp.database.alumnoDao().addAlumno(alumno)
         }
     }
 

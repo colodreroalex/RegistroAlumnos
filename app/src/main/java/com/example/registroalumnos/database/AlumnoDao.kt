@@ -7,24 +7,18 @@ import androidx.room.Query
 import androidx.room.Update
 @Dao
 interface AlumnoDao {
-    @Query("SELECT * FROM alumno")
-    fun getAllElements(): MutableList<Alumno>
-
-    @Query("SELECT * FROM alumno WHERE id like :id")
-    fun getElementById(id: Long): Alumno
-
     @Insert
-    fun addAlumno(elemento: Alumno):Long
+    fun addAlumno(alumno: Alumno):Long
+
+
+    @Query("SELECT * FROM alumno WHERE nombre LIKE :nombre")
+    fun obteneralumnopornombre(nombre:String): MutableList<Alumno>
 
     @Update
-    fun updateAlumno(elemento: Alumno):Int
+    fun updateLista(alumno: Alumno)
 
     @Delete
-    fun deleteLista(alumno: MutableList<Alumno>)
-
-    @Query("SELECT * FROM alumno WHERE nombre like :nombre")
-    fun obtenerAlumnoPorNombre(nombre: String): MutableList<Alumno>
-
+    fun deleteLista(alumno: Alumno)
 
 
 

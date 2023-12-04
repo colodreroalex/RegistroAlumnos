@@ -1,11 +1,9 @@
 package com.example.registroalumnos
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.registroalumnos.database.Alumno
-import com.example.registroalumnos.database.AlumnoDao
 import com.example.registroalumnos.database.MiAlumnoApp
-import com.example.registroalumnos.databinding.ActivityMainBinding
 import com.example.registroalumnos.databinding.ActivityUpdateBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,9 +19,36 @@ class UpdateActivity : ActivityWithMenus() {
         binding = ActivityUpdateBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        listaAlumnos = ArrayList()
+        binding.buttonActualizar.setOnClickListener() {
+            var nombreAlumno = binding.tbActualizarNombre.text.toString()
+            var cursoAlumno = binding.tbActualizarCurso.text.toString()
+
+            // Validaciones
+            if (nombreAlumno.isEmpty())
+            {
+                Toast.makeText(this, "No puede haber campos vacíos", Toast.LENGTH_SHORT).show()
+            }
+            else
+            {
+
+                updateAlumno(nombreAlumno, cursoAlumno)
+                Toast.makeText(this, "Alumno eliminado", Toast.LENGTH_SHORT).show()
+        }
     }
 
 
 
+    }
+
+     fun updateAlumno(nombreAlumno: String, cursoAlumno: String) {
+        CoroutineScope(Dispatchers.IO).launch{
+            val alumno = MiAlumnoApp.database.alumnoDao().obteneralumnopornombre(nombreAlumno)
+
+            val listaAlumnos = alumno[0]
+            listaAlumnos.curso = cursoAlumno
+            MiAlumnoApp.database.alumnoDao().updateLista(listaAlumnos)
+
+
+        }
+    }
 }

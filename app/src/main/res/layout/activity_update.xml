@@ -7,4 +7,37 @@
     android:layout_height="match_parent"
     tools:context=".UpdateActivity">
 
+    <EditText
+        android:id="@+id/tbActualizarNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="65dp"
+        android:ems="10"
+        android:hint="Actualizar el nombre"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonActualizar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="132dp"
+        android:text="Actualizar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tbActualizarNombre" />
+
+    <EditText
+        android:id="@+id/tbActualizarCurso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="34dp"
+        android:ems="10"
+        android:hint="Actualizar Curso"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tbActualizarNombre" />
 </androidx.constraintlayout.widget.ConstraintLayout>
