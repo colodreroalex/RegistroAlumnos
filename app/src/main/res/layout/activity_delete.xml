@@ -14,7 +14,7 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="100dp"
         android:ems="10"
-        android:hint="Introduce el nombre del User a eliminar"
+        android:hint="Introduce el id del User a eliminar"
         android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

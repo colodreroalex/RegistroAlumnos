@@ -47,12 +47,7 @@ class MainActivity : ActivityWithMenus() {
         }
     }
 
-    private fun UpdateListaAlumnos(alumno: Alumno){
-        CoroutineScope(Dispatchers.IO).launch {
-            alumno.activo = !alumno.activo
-            MiAlumnoApp.database.alumnoDao().updateAlumno(alumno)
-        }
-    }
+
 
 
 

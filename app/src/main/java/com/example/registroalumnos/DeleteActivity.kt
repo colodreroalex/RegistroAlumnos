@@ -1,6 +1,5 @@
 package com.example.registroalumnos
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.room.Delete
 import com.example.registroalumnos.database.Alumno
@@ -24,20 +23,18 @@ class DeleteActivity : ActivityWithMenus() {
         listaAlumnos = ArrayList()
 
         binding.buttonBorrar.setOnClickListener() {
-            deleteListaAlumnos(
-                Alumno(
-                    nombre = binding.tbNombreBorrar.text.toString(),
-                )
-            )
+            deleteListaAlumnos(binding.tbNombreBorrar.text.toString())
         }
     }
 
-    private fun deleteListaAlumnos(alumno: Alumno){
+    private fun deleteListaAlumnos(alumno: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            val position = listaAlumnos.indexOf(alumno)
-            MiAlumnoApp.database.alumnoDao().deleteAlumno(alumno)
-            listaAlumnos.remove(alumno)
-
+           val alumno = MiAlumnoApp.database.alumnoDao().obtenerAlumnoPorNombre(alumno)
+            runOnUiThread(){
+                val lista = alumno[0]
+                MiAlumnoApp.database.alumnoDao()
+            }
         }
     }
+
 }
